@@ -1,0 +1,44 @@
+apiVersion: ols.openshift.io/v1alpha1
+kind: OLSConfig
+metadata:
+  labels:
+    app.kubernetes.io/created-by: lightspeed-operator
+    app.kubernetes.io/instance: olsconfig-sample
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: olsconfig
+    app.kubernetes.io/part-of: lightspeed-operator
+  name: cluster
+spec:
+  llm:
+    providers:
+    - credentialsSecretRef:
+        name: gemma-fake-secret
+      models:
+      - name: gemma-3-27b
+      name: gemma-provider
+      type: rhoai_vllm
+      url: https://gemma-3-27b-innovate-together-hackathon.apps.brno-hack1-pool-f54xx.aws.rh-ods.com/v1
+  ols:
+    rag:
+      - image: image-registry.openshift-image-registry.svc:5000/openshift-pipelines/lightspeed-rag-content:latest
+    conversationCache:
+      postgres:
+        credentialsSecret: lightspeed-postgres-secret
+        dbName: postgres
+        maxConnections: 2000
+        sharedBuffers: 256MB
+        user: postgres
+      type: postgres
+    defaultModel: gemma-3-27b
+    defaultProvider: gemma-provider
+    deployment:
+      console:
+        replicas: 1
+      replicas: 1
+    logLevel: INFO
+    rag:
+    - image: image-registry.openshift-image-registry.svc:5000/openshift-pipelines/lightspeed-rag-content:latest
+      indexID: vector_db_index
+      indexPath: /rag/vector_db
+  olsDataCollector:
+    logLevel: INFO
