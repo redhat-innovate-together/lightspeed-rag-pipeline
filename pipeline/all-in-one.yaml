@@ -100,7 +100,7 @@ spec:
     - name: git-repos
       type: string
       description: Comma-separated list of git repositories to clone
-      default: "https://github.com/agiertli/payments-service.git"
+      default: "https://github.com/redhat-innovate-together/payments-service.git"
   workspaces:
     - name: output
       description: The workspace to store cloned repositories
@@ -193,7 +193,7 @@ spec:
 
         # Clone the build repository
         echo "Cloning build repository..."
-        git clone https://github.com/agiertli/lightspeed-rag-content.git build-repo
+        git clone https://github.com/redhat-innovate-together/lightspeed-rag-pipeline.git build-repo
 
         # Copy the byok directory contents to current directory
         cp -r build-repo/byok/* .
@@ -305,7 +305,7 @@ spec:
     - name: git-repos
       type: string
       description: Comma-separated list of git repositories to clone
-      default: "https://github.com/agiertli/payments-service.git"
+      default: "https://github.com/redhat-innovate-together/payments-service.git"
     - name: image-name
       type: string
       description: Name of the container image to build
@@ -363,7 +363,7 @@ spec:
     name: markdown-container-pipeline
   params:
     - name: git-repos
-      value: "https://github.com/agiertli/payments-service.git"
+      value: "https://github.com/redhat-innovate-together/payments-service.git"
     - name: image-name
       value: "lightspeed-rag-content"
     - name: image-tag
