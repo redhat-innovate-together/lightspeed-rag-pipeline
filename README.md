@@ -1,4 +1,4 @@
-# OpenShift Lighspeed RAG content
+# OpenShift Lighspeed RAG content2
 
 ## `requirements*` files generation
 
